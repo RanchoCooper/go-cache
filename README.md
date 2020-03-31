@@ -1,2 +1,7 @@
+## go-cache
 
-[origin](https://geektutu.com/post/geecache.html)
+features
+
+- LRU淘汰策略
+- 支持单机并发
+
