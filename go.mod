@@ -1,3 +1,3 @@
-module github.com/RanchoCooper/go-cache.git
+module github.com/RanchoCooper/go-cache
 
 go 1.14
