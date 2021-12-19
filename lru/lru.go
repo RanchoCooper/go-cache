@@ -73,12 +73,15 @@ func (c *Cache) Add(key string, value Value) {
         c.nbytes += int64(value.Len()) - int64(kv.value.Len())
         kv.value = value
     } else {
-        c.ll.PushFront(item)
+        item := c.ll.PushFront(&entry{
+            key:   key,
+            value: value,
+        })
         c.cache[key] = item
         c.nbytes += int64(value.Len()) + int64(len(key))
     }
 
-    if c.maxBytes != 0 && c.maxBytes < c.nbytes {
+    for c.maxBytes != 0 && c.maxBytes < c.nbytes {
         c.RemoveOldest()
     }
 }
